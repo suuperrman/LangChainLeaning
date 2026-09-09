@@ -149,7 +149,6 @@ print("=" * 60)
 print("四、工具与智能体结合（ReAct 模式）")
 print("=" * 60)
 
-
 @tool
 def calculate(expression: str) -> str:
     """执行数学计算。支持加减乘除，如 '2 + 3 * 4'。仅用于数学计算。"""

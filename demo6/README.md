@@ -110,7 +110,7 @@ pip install langchain langchain-openai langgraph pydantic python-dotenv
 # OPENAI_API_KEY=sk-xxx
 
 # 运行
-python 08_structured_output.py
+python structured_output.py
 ```
 
 ## 示例内容速览

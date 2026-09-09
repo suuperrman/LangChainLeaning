@@ -109,7 +109,7 @@ pip install langchain langchain-openai langgraph pydantic python-dotenv
 # OPENAI_API_KEY=sk-xxx
 
 # 运行
-python 06_tools.py
+python tools.py
 ```
 
 ## 示例内容速览

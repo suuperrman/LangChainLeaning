@@ -109,7 +109,7 @@ pip install langchain langchain-openai langgraph python-dotenv
 # OPENAI_API_KEY=sk-xxx
 
 # 运行
-python 07_agents_intro.py
+python agents_intro.py
 ```
 
 ## 示例内容速览

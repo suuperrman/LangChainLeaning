@@ -168,7 +168,7 @@ pip install langchain langchain-openai langgraph python-dotenv
 # OPENAI_API_KEY=sk-xxx
 
 # 运行
-python 10_short_term_memory.py
+python short_term_memory.py
 ```
 
 ## 示例内容速览

@@ -168,7 +168,7 @@ def delete_old_messages(state: AgentState, runtime: Runtime) -> dict | None:
     if len(messages) > 4:
         # 删除最早的两条消息（1轮用户 + 1轮AI）
         to_remove = [RemoveMessage(id=m.id) for m in messages[:2]]
-        print(f"  🗑️ 删除了 {len(to_remove)} 条旧消息（当前共 {len(messages)} 条）")
+        print(f"   删除了 {len(to_remove)} 条旧消息（当前共 {len(messages)} 条）")
         return {"messages": to_remove}
     return None
 

@@ -102,7 +102,7 @@ pip install langchain langchain-openai langgraph python-dotenv
 # OPENAI_API_KEY=sk-xxx
 
 # 运行
-python 09_streaming.py
+python streaming.py
 ```
 
 ## 示例内容速览

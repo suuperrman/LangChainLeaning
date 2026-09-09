@@ -38,11 +38,11 @@ def get_weather(city: str, runtime: ToolRuntime) -> str:
     writer = runtime.stream_writer
 
     # 流式传输自定义进度更新
-    writer(f"🔍 正在查询 {city} 的天气数据...")
+    writer(f" 正在查询 {city} 的天气数据...")
     time.sleep(0.3)  # 模拟网络延迟
-    writer(f"📡 连接气象服务器成功")
+    writer(f" 连接气象服务器成功")
     time.sleep(0.3)
-    writer(f"📊 正在解析天气数据...")
+    writer(f" 正在解析天气数据...")
     time.sleep(0.3)
 
     weather_data = {
@@ -53,7 +53,7 @@ def get_weather(city: str, runtime: ToolRuntime) -> str:
     }
     result = weather_data.get(city, f"{city}：暂无天气数据")
 
-    writer(f"✅ 查询完成")
+    writer(f" 查询完成")
     return result
 
 
@@ -61,14 +61,14 @@ def get_weather(city: str, runtime: ToolRuntime) -> str:
 def calculate(expression: str, runtime: ToolRuntime) -> str:
     """执行数学计算。"""
     writer = runtime.stream_writer
-    writer(f"🧮 正在计算: {expression}")
+    writer(f" 正在计算: {expression}")
     time.sleep(0.2)
     try:
         result = eval(expression)
-        writer(f"✅ 计算完成，结果: {result}")
+        writer(f" 计算完成，结果: {result}")
         return f"{expression} = {result}"
     except Exception as e:
-        writer(f"❌ 计算错误: {e}")
+        writer(f" 计算错误: {e}")
         return f"错误: {e}"
 
 
@@ -109,13 +109,13 @@ for chunk in agent.stream(
         if msg_type == "AIMessage":
             if last_msg.tool_calls:
                 tc = last_msg.tool_calls[0]
-                print(f"[步骤 {step_count}] 🤖 节点: {node_name}")
+                print(f"[步骤 {step_count}]  节点: {node_name}")
                 print(f"         决定调用工具: {tc['name']}({tc['args']})")
             else:
-                print(f"[步骤 {step_count}] 🤖 节点: {node_name}")
+                print(f"[步骤 {step_count}]  节点: {node_name}")
                 print(f"         最终回答: {last_msg.content[:60]}...")
         elif msg_type == "ToolMessage":
-            print(f"[步骤 {step_count}] 🔧 节点: {node_name}")
+            print(f"[步骤 {step_count}]  节点: {node_name}")
             print(f"         工具结果: {last_msg.content[:60]}...")
         print()
 
@@ -179,7 +179,7 @@ for chunk in agent.stream(
     {"messages": [{"role": "user", "content": question3}]},
     stream_mode="custom",
 ):
-    print(f"  📡 {chunk}")
+    print(f"   {chunk}")
 
 print()
 print("说明：custom 模式只输出工具中 stream_writer 发送的内容")
@@ -205,18 +205,18 @@ for stream_mode, chunk in agent.stream(
     stream_mode=["updates", "custom"],
 ):
     if stream_mode == "custom":
-        print(f"  [custom] 📡 {chunk}")
+        print(f"  [custom]  {chunk}")
     elif stream_mode == "updates":
         for node_name, data in chunk.items():
             last_msg = data["messages"][-1]
             msg_type = type(last_msg).__name__
             if msg_type == "AIMessage" and last_msg.tool_calls:
                 tc = last_msg.tool_calls[0]
-                print(f"  [updates] 🤖 {node_name}: 调用工具 {tc['name']}")
+                print(f"  [updates]  {node_name}: 调用工具 {tc['name']}")
             elif msg_type == "ToolMessage":
-                print(f"  [updates] 🔧 {node_name}: {last_msg.content[:40]}")
+                print(f"  [updates]  {node_name}: {last_msg.content[:40]}")
             elif msg_type == "AIMessage":
-                print(f"  [updates] 🤖 {node_name}: 最终回答 (省略)")
+                print(f"  [updates]  {node_name}: 最终回答 (省略)")
 
 print()
 print("提示：多模式流式让你可以同时展示：")
