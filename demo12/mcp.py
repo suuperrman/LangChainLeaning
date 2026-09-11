@@ -21,9 +21,6 @@ from langchain.agents import create_agent
 from langchain_openai import ChatOpenAI
 
 
-# ============================================================
-# 统一的模型创建方式（与 demo2 保持一致，使用阿里云 DashScope 兼容接口）
-# ============================================================
 def create_model(temperature: float = 0.4) -> ChatOpenAI:
     """创建 ChatOpenAI 模型实例（使用阿里云 DashScope 兼容接口）。"""
     return ChatOpenAI(
